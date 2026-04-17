@@ -13,11 +13,7 @@ TOKEN = os.getenv("BOT_TOKEN")
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Bot chal raha hai 🚀")
 
-def run_bot():
-    import asyncio
-    app = ApplicationBuilder().token(TOKEN).build()
-    app.add_handler(CommandHandler("start", start))
-    asyncio.run(app.run_polling())
+
 
 
 # ------------------ WEB PANEL ------------------
@@ -29,11 +25,16 @@ def home():
     return "Admin Panel Running ✅"
 
 # ------------------ RUN BOTH ------------------
-
 if __name__ == "__main__":
-    # bot background me
-    threading.Thread(target=run_bot).start()
-
-    # Railway port
+    # Flask web panel in background thread
     port = int(os.environ.get("PORT", 8000))
-    web.run(host="0.0.0.0", port=port)
+
+    def run_flask():
+        web.run(host="0.0.0.0", port=port, use_reloader=False)
+
+    threading.Thread(target=run_flask, daemon=True).start()
+
+    # Bot in main thread
+    app = ApplicationBuilder().token(TOKEN).build()
+    app.add_handler(CommandHandler("start", start))
+    app.run_polling()
