@@ -14,9 +14,11 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text("Bot chal raha hai 🚀")
 
 def run_bot():
+    import asyncio
     app = ApplicationBuilder().token(TOKEN).build()
     app.add_handler(CommandHandler("start", start))
-    app.run_polling()
+    asyncio.run(app.run_polling())
+
 
 # ------------------ WEB PANEL ------------------
 
