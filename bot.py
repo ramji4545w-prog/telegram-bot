@@ -19,7 +19,7 @@ def run_bot():
 
 # ------------------ WEB PANEL ------------------
 
-web = Flask(__name__)
+web = F'lask(__name__')
 
 @web.route("/")
 def home():
