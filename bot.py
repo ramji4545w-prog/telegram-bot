@@ -28,7 +28,7 @@ def home():
 
 # ------------------ RUN BOTH ------------------
 
-if name == "__main__":
+if __name__ == "__main__":
     # bot background me
     threading.Thread(target=run_bot).start()
 
