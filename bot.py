@@ -1,3 +1,4 @@
+
 import os
 import threading
 from flask import Flask
@@ -19,7 +20,7 @@ def run_bot():
 
 # ------------------ WEB PANEL ------------------
 
-web = F'lask(__name__')
+web = Flask("__name__")
 
 @web.route("/")
 def home():
