@@ -6,7 +6,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 # TOKEN from Railway Variables
-TOKEN = os.getenv("8394853752:AAGq5yN1zaZg5IYtAw2c7X_5yH_cX_t3L8I")
+TOKEN = "8394853752:AAGq5yN1zaZg5IYtAw2c7X_5yH_cX_t3L8I"
 
 # ------------------ TELEGRAM BOT ------------------
 
